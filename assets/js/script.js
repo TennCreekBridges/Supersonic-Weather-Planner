@@ -1,7 +1,7 @@
 // globals
 var searchButtonEl = document.querySelector("#search-button");
 var historyArray = document.querySelector("#cities");
-var resetButton = document.querySelector("resetBtn");
+var resetButton = document.querySelector("#resetBtn");
 
 // API fetch and function
 var getWeatherApi = function () {
@@ -30,18 +30,16 @@ var getWeatherApi = function () {
     historyArray.innerHTML = savedCities.join('<br/><hr/>');
 };
 
+// reset cleared search history
 var resetFavorites = function () {
     historyArray.textContent = "";
     localStorage.clear();
     console.log("cleared city search history");
 }
 
-// eventListener for Search button
+// eventListener for search button
 searchButtonEl.addEventListener("click", getWeatherApi);
 
-resetButtonEl.addEventListener("click", resetFavorites);
+// add event listener to reset saved cities
+resetButton.addEventListener("click", resetFavorites);
 
-
-// empty city-box div and append current weather of searched city
-// $('#city-box').empty();
-// $('#city-box').append(cityName, weatherIcon, weatherType, cityTemp, cityHumidity, cityWindSpeed);
